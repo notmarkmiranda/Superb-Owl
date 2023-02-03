@@ -1,3 +1,19 @@
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+
+  def generate_code
+    update(confirmation_code: random_code, confirmation_expiration: 15.minutes.from_now)
+  end
+
+  def confirm?(code)
+    return false unless confirmation_code && confirmation_expiration
+    code.upcase == confirmation_code.upcase && Time.current < confirmation_expiration
+  end
+
+  private
+
+
+  def random_code
+    (0...5).map { (65 + rand(26)).chr }.join
+  end
 end

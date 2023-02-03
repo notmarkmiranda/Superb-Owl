@@ -17,10 +17,12 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
+  gem "capybara"
   gem "factory_bot_rails"
   gem "pry"
   gem "rspec-rails"
   gem "shoulda-matchers", "~> 5.0"
+  gem "webdrivers"
 end
 
 group :development do

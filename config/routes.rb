@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "/lets-go", to: "sessions#new", as: "lets_go"
+  post "/lets-go", to: "sessions#create", as: "sign_in"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "/confirmation/:id", to: "sessions#confirmation", as: "confirmation"
+  post "/confirm", to: "sessions#confirm", as: "confirm"
+
+  get "/dashboard", to: "users#show", as: "dashboard"
 end

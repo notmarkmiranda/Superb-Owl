@@ -1,0 +1,6 @@
+<%= form_with url: confirm_path do |f| %>
+  <%= f.hidden_field :user_id, value: params[:id] %>
+  <%= f.label :confirmation_code, "Enter Confirmation Code" %>
+  <%= f.text_field :confirmation_code %>
+  <%= f.submit "Log In" %>
+<% end %>
