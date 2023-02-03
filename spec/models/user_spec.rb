@@ -32,4 +32,40 @@ RSpec.describe User, type: :model do
       expect(user.confirm?("ASDF")).to eq(false)
     end
   end
+
+  describe "#names_complete?" do
+    let(:user) { create(:user, first_name: nil, last_name: nil, nickname: nil) }
+
+    describe "returns true" do
+      it "when first and last name are present" do
+        user.update(first_name: "Mark", last_name: "Miranda")
+
+        expect(user.names_complete?).to eq(true)
+      end
+
+      it "when nickname is present" do
+        user.update(nickname: Faker::Superhero.name)
+
+        expect(user.names_complete?).to eq(true)
+      end
+    end
+
+    describe "returns false" do
+      it "returns false when a user only has a first name" do
+        user.update(first_name: "Mark")
+
+        expect(user.names_complete?).to eq(false)
+      end
+
+      it "returns false when a user only has a last name" do
+        user.update(last_name: "Miranda")
+
+        expect(user.names_complete?).to eq(false)
+      end
+
+      it "returns false when a user has no names" do
+        expect(user.names_complete?).to eq(false)
+      end
+    end
+  end
 end

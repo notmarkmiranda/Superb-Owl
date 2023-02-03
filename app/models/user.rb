@@ -10,8 +10,11 @@ class User < ApplicationRecord
     code.upcase == confirmation_code.upcase && Time.current < confirmation_expiration
   end
 
-  private
+  def names_complete?
+    (first_name.present? && last_name.present?) || nickname.present?
+  end
 
+  private
 
   def random_code
     (0...5).map { (65 + rand(26)).chr }.join

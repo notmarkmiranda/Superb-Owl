@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
     redirect_to lets_go_path unless current_user
   end
 
+  helper_method :current_user
+
   private
 
   def current_user

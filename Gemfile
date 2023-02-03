@@ -19,6 +19,7 @@ gem "bootsnap", require: false
 group :development, :test do
   gem "capybara"
   gem "factory_bot_rails"
+  gem "faker"
   gem "pry"
   gem "rspec-rails"
   gem "shoulda-matchers", "~> 5.0"

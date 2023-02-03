@@ -14,6 +14,6 @@ RSpec.describe "Visitor can sign up", type: :system do
 
     click_button "Log In"
 
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content("Edit profile")
   end
 end
