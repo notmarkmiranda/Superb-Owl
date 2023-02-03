@@ -12,7 +12,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "redis", "~> 4.0"
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "bootsnap", require: false
 
@@ -23,10 +23,10 @@ group :development, :test do
   gem "pry"
   gem "rspec-rails"
   gem "shoulda-matchers", "~> 5.0"
+  gem "standard"
   gem "webdrivers"
 end
 
 group :development do
   gem "web-console"
 end
-

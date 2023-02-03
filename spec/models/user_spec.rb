@@ -1,8 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   it { should validate_presence_of :email }
   it { should validate_uniqueness_of(:email).case_insensitive }
+  it { should have_many :pools }
 
   describe "#generate_code" do
     let(:user) { create(:user, confirmation_code: nil, confirmation_expiration: nil) }

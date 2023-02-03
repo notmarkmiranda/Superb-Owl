@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
+  has_many :pools
 
   def generate_code
     update(confirmation_code: random_code, confirmation_expiration: 15.minutes.from_now)
@@ -17,6 +18,6 @@ class User < ApplicationRecord
   private
 
   def random_code
-    (0...5).map { (65 + rand(26)).chr }.join
+    (0...5).map { rand(65..90).chr }.join
   end
 end
