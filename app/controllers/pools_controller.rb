@@ -16,6 +16,17 @@ class PoolsController < ApplicationController
     end
   end
 
+  def edit
+    @pool = current_user.pools.find(params[:id])
+  end
+
+  def update
+    @pool = current_user.pools.find(params[:id])
+    if @pool.update(pool_params)
+      redirect_to @pool
+    end
+  end
+
   private
 
   def pool_params

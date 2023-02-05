@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:update]
-  resources :pools, only: [:show, :new, :create]
+  resources :pools, only: [:show, :new, :create, :edit, :update]
 
   get "/users/edit", to: "users#edit", as: "edit_user"
   get "/lets-go", to: "sessions#new", as: "lets_go"

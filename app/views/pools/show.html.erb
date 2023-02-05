@@ -1,4 +1,7 @@
 <h1><%= @pool.name %></h1>
+<% if @pool.editable? %>
+  <%= link_to "Edit Pool", edit_pool_path(@pool) %>
+<% end %>
 Lock time: <%= @pool.lock %>
 Locked for entries: <%= @pool.locked? %>
 
