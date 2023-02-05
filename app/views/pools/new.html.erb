@@ -1,0 +1,17 @@
+<%= form_with model: @pool do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :lock %>
+  <%= f.datetime_select :lock %>
+
+  <%= f.label :finalize %>
+  <%= f.datetime_select :finalize%>
+
+  <%= f.label :multiple_entries do %>
+    <%= f.check_box :multiple_entries %>
+    Allow multiple entries per person?
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
