@@ -39,7 +39,6 @@ RSpec.describe "User can update a pool", type: :system do
   end
 
   describe "if the current_time is before the lock and finalize time and the pool is active" do
-
     before { pool.update(lock: DateTime.tomorrow) }
 
     it "updates the pool" do
