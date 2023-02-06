@@ -2,7 +2,9 @@ class PoolsController < ApplicationController
   before_action :require_user
 
   def show
-    @pool = Pool.find(params[:id])
+    @pool = Pool.includes(questions: :options).find(params[:id])
+    @questions = @pool.questions
+    @question = @pool.questions.new
   end
 
   def new

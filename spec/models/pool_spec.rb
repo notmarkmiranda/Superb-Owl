@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Pool, type: :model do
   before { create(:pool) }
   it { should belong_to :user }
+  it { should have_many :questions }
   it { should validate_presence_of :name }
   it { should validate_uniqueness_of(:name).case_insensitive }
 

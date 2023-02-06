@@ -1,5 +1,6 @@
 class Pool < ApplicationRecord
   belongs_to :user
+  has_many :questions
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
