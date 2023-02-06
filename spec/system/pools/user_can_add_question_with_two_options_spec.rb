@@ -20,7 +20,30 @@ RSpec.describe "User can add a question with 2 options to a pool", type: :system
     expect(page).to have_content(pool.name)
   end
 
-  it "does not save the question with 0 options"
+  it "does not save the question with 0 options" do
+    question = "Who will win Super Bowl LVII?"
 
-  it "does not save the question with 1 option"
+    visit pool_path(pool)
+
+    fill_in "Question description", with: question
+
+    click_button "Save Question"
+
+    expect(page).to have_content(pool.name)
+    expect(page).not_to have_content(question)
+  end
+
+  it "does not save the question with 1 option" do
+    question = "Who will win Super Bowl LVII?"
+
+    visit pool_path(pool)
+
+    fill_in "Question description", with: question
+    fill_in "Option 1", with: "Philadelphia Eagles"
+
+    click_button "Save Question"
+
+    expect(page).to have_content(pool.name)
+    expect(page).not_to have_content(question)
+  end
 end

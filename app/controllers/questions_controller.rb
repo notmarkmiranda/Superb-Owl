@@ -4,8 +4,11 @@ class QuestionsController < ApplicationController
   def create
     @pool = Pool.find(params[:pool_id])
     @question = @pool.questions.new(question_params)
-
-    if @question.save
+    @question.errors.add(:number_of_options, "less than 2 options") if @question.options.size < 2
+    if @question.errors.empty? && @question.save
+      redirect_to @pool
+    else
+      flash[:alert] = @question.errors.full_messages.join(", ")
       redirect_to @pool
     end
   end
