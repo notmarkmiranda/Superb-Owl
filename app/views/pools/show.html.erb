@@ -5,3 +5,25 @@
 Lock time: <%= @pool.lock %>
 Locked for entries: <%= @pool.locked? %>
 
+<% @questions.each_with_index do |question, i| %>
+  <p>Question #<%= i + 1 %></p>
+  <p>Description: <%= question.description %></p>
+  <% question.options.each_with_index do |option, j| %>
+    <p>Option #<%= j + 1%></p>
+    <p>Description <%= option.description %></p>
+  <% end %>
+<% end %>
+
+<%# if available %>
+<%= form_with model: [@pool, @question] do |f| %>
+  <%= f.label :description, "Question description" %>
+  <%= f.text_field :description %>
+  <% 2.times do |n| %>
+    <%= f.fields_for :options, @question.options.new do |ff| %>
+      <%= ff.label :description, "Option #{n + 1}" %>
+      <%= ff.text_field :description %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit "Save Question" %>
+<% end %>
