@@ -6,11 +6,11 @@ class QuestionsController < ApplicationController
     @question = @pool.questions.new(question_params)
     @question.errors.add(:number_of_options, "less than 2 options") if @question.options.size < 2
     if @question.errors.empty? && @question.save
-      redirect_to @pool
+      flash[:notice] = "Your question has been created"
     else
       flash[:alert] = @question.errors.full_messages.join(", ")
-      redirect_to @pool
     end
+    redirect_to @pool
   end
 
   private
