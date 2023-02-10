@@ -16,6 +16,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:description, options_attributes: [:description])
+    params.require(:question).permit(:description, :tiebreaker, options_attributes: [:description])
   end
 end

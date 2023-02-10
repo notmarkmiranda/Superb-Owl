@@ -24,7 +24,10 @@ Locked for entries: <%= @pool.locked? %>
         <%= ff.text_field :description %>
       <% end %>
     <% end %>
-
+    <%= f.label :tiebreaker do %>
+      <%= f.check_box :tiebreaker %>
+      Tiebreaker
+    <% end %>
     <%= f.submit "Save Question" %>
   <% end %>
 <% end %>

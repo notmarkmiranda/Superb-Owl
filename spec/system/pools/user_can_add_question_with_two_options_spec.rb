@@ -13,6 +13,7 @@ RSpec.describe "User can add a question with 2 options to a pool", type: :system
     fill_in "Question description", with: question
     fill_in "Option 1", with: "Philadelphia Eagles"
     fill_in "Option 2", with: "Kansas City Chiefs"
+    check "Tiebreaker"
 
     click_button "Save Question"
 
