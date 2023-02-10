@@ -3,8 +3,8 @@ FactoryBot.define do
     user
     sequence(:name) { |n| "Swimming Pools #{n}" }
     active { false }
-    lock { "2023-02-03 16:23:38" }
-    finalize { "2023-02-03 16:23:38" }
+    lock { nil }
+    finalize { nil }
     multiple_entries { false }
   end
 end
