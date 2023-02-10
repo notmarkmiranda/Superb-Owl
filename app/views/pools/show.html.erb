@@ -14,16 +14,17 @@ Locked for entries: <%= @pool.locked? %>
   <% end %>
 <% end %>
 
-<%# if available %>
-<%= form_with model: [@pool, @question] do |f| %>
-  <%= f.label :description, "Question description" %>
-  <%= f.text_field :description %>
-  <% 2.times do |n| %>
-    <%= f.fields_for :options, @question.options.new do |ff| %>
-      <%= ff.label :description, "Option #{n + 1}" %>
-      <%= ff.text_field :description %>
+<% unless @pool.locked? %>
+  <%= form_with model: [@pool, @question] do |f| %>
+    <%= f.label :description, "Question description" %>
+    <%= f.text_field :description %>
+    <% 2.times do |n| %>
+      <%= f.fields_for :options, @question.options.new do |ff| %>
+        <%= ff.label :description, "Option #{n + 1}" %>
+        <%= ff.text_field :description %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= f.submit "Save Question" %>
+    <%= f.submit "Save Question" %>
+  <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "User can add a question with 2 options to a pool", type: :system do
-  let(:pool) { create(:pool) }
+  let(:pool) { create(:pool, lock: Date.tomorrow) }
 
   before { login(pool.user) }
 

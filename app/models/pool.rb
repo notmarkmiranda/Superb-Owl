@@ -9,10 +9,12 @@ class Pool < ApplicationRecord
   end
 
   def locked?
+    return false unless lock
     Time.current > lock
   end
 
   def finalized?
+    return false unless finalize
     Time.current > finalize
   end
 end
