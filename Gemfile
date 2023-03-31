@@ -23,6 +23,7 @@ group :development, :test do
   gem "faker"
   gem "pry"
   gem "rspec-rails"
+  gem "shoulda-matchers", "~>5.0"
 end
 
 group :development do
