@@ -14,15 +14,16 @@ gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem "tailwindcss-rails", "~> 2.0"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
+  gem "capybara"
   gem "factory_bot_rails"
   gem "faker"
   gem "pry"
   gem "rspec-rails"
+  gem "selenium-webdriver"
   gem "shoulda-matchers", "~>5.0"
 end
 
