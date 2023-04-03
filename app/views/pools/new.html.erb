@@ -1,0 +1,14 @@
+<%= form_with model: @pool do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label :game, "Game Type" %>
+  <%= f.select :game, options_for_select(Pool.games.map{ |k,v| [k.titleize, Pool.games.key(v)]}, @pool.game) %>
+  <div>
+    <%= f.label :public_pool do %>
+      <%= f.check_box :public_pool %>
+      Publicly viewable?
+    <% end %>
+  </div>
+
+  <%= f.submit "Create Pool" %>
+<% end %>
