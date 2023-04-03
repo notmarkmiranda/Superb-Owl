@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li>PROP<strong>BETS</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <% if current_user %>
+      <li><%= link_to "Sign Out", sign_out_path, role: "button" %></li>
+    <% end %>
+  </ul>
+</nav>
