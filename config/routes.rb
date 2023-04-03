@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "/sign-out", to: "sessions#destroy", as: "sign_out"
 
   get "/dashboard", to: "users#show", as: "dashboard"
+
+  resources :pools, only: [:new, :create, :show]
 end
