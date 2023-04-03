@@ -15,8 +15,6 @@ RSpec.describe "User can create a pool", type: :system do
     check('Publicly viewable?', allow_label_click: true)
     click_button "Create Pool"
 
-
-
     expect(page).to have_content(pool_name)
   end
 end
