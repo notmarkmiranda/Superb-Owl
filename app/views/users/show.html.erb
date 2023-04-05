@@ -3,3 +3,22 @@
 <hr>
 
 <p>Welcome, <%= current_user.email %>!</p>
+<h3>Pools</h3>
+<div class="grid">
+  <article>
+    <h3>Admin Pools</h3>
+    <% if current_user.all_admin_pools.any? %>
+      <ul><%= render current_user.all_admin_pools %></ul>
+    <% else %>
+      <p>You are not currently an admin on any pools, maybe <%= link_to "create one", new_pool_path %>.</p>
+    <% end %>
+  </article>
+  <article>
+    <h3>Member Pools</h3>
+    <% if current_user.member_pools.any? %>
+      <ul><%= render current_user.member_pools %></ul>
+    <% else %>
+      <p>You are not currently a member on any pools.</p>
+    <% end %>
+  </article>
+</div>
