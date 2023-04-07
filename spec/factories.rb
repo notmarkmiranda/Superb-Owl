@@ -15,12 +15,13 @@ FactoryBot.define do
 
   factory :pool do
     sequence(:name) { |n| "#{Faker::Team.name} #{n}" }
-    user
-      active { false }
+    association :super_admin, factory: :user
+    active { false }
     locked { false }
     game { 0 }
     finalized { false }
     archived { false }
+    public_pool { true }
   end
 
   factory :user do

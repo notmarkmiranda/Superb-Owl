@@ -1,8 +1,9 @@
 class PoolsController < ApplicationController
-  before_action :require_user
+  before_action :require_user, only: [:new, :create]
 
   def show
-    @pool = Pool.find(params[:id])
+    @pool = Pool.includes(memberships: :users).find(params[:id])
+    authorize @pool
   end
 
   def new
