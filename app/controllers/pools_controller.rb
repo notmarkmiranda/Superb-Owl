@@ -2,7 +2,7 @@ class PoolsController < ApplicationController
   before_action :require_user, only: [:new, :create]
 
   def show
-    @pool = Pool.includes(memberships: :users).find(params[:id])
+    @pool = Pool.includes(:admins, :members).find(params[:id])
     authorize @pool
   end
 
@@ -11,7 +11,7 @@ class PoolsController < ApplicationController
   end
 
   def create
-    @pool = current_user.pools.new(pool_params)
+    @pool = Pool.new(pool_params.merge(user_id: current_user.id))
     if @pool.save
       flash[:notice] = "Pool created!"
       redirect_to @pool
