@@ -6,6 +6,7 @@ class Pool < ApplicationRecord
   has_many :admins, through: :admin_memberships, source: :user
   has_many :member_memberships, -> { where(role: 0) }, class_name: "Membership"
   has_many :members, through: :member_memberships, source: :user
+  has_many :questions
 
   enum game: [:prop_bet]
 

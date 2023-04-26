@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :question do
+    pool
+    tiebreaker { false }
+  end
+
   factory :membership do
     pool
     user
